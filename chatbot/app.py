@@ -16,7 +16,6 @@ def find_answer(question, qa_data):
     return "I don't have an answer for that. Try asking about 42Amman or Jordan!"
 
 
-
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -24,7 +23,9 @@ def index():
 @app.route("/ask", methods=["POST"])
 def ask():
     question = request.json.get("question")
-    return jsonify({"answer": f"Echo: {question}"})
+    qa_data = load_qa_dataset()
+    answer = find_answer(question, qa_data)
+    return jsonify({"answer": answer})
 """
 
 @app.route('/ask', methods=['POST'])
