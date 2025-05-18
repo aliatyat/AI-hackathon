@@ -9,7 +9,6 @@ A Flask-based web chatbot powered by a fine-tuned DistilGPT-2 model, designed to
 - [Usage](#usage)
 - [Dataset](#dataset)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 - **Domain-Specific Responses**: Answers questions only about 42 Amman, 42 Irbid, the 42 Network, and Jordan, rejecting off-topic queries.
@@ -88,6 +87,3 @@ A Flask-based web chatbot powered by a fine-tuned DistilGPT-2 model, designed to
 3. Commit changes (`git commit -m 'Add awesome feature'`).
 4. Push to the branch (`git push origin feature/awesome-feature`).
 5. Open a pull request.
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
