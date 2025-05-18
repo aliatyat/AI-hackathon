@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,21 +12,54 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+        
+        /* Dark Mode Colors */
+        html[data-theme="dark"] {
+            --bg-color: #0c0c11;
+            --header-bg: #0c0c11;
+            --chat-bg: #121212;
+            --input-bg: #121212;
+            --message-user-bg: #00003a;
+            --message-bot-bg: #222222;
+            --text-color: #ffffff;
+            --border-color: #333333;
+            --accent-color: #00babc;
+            --accent-hover: #009a9c;
+            --button-text: #ffffff;
+            --input-border: #333333;
+        }
+        
+        /* Light Mode Colors */
+        html[data-theme="light"] {
+            --bg-color: #f0f2f5;
+            --header-bg: #ffffff;
+            --chat-bg: #ffffff;
+            --input-bg: #f5f5f5;
+            --message-user-bg: #e1f5fe;
+            --message-bot-bg: #f5f5f5;
+            --text-color: #333333;
+            --border-color: #e0e0e0;
+            --accent-color: #00babc;
+            --accent-hover: #009a9c;
+            --button-text: #ffffff;
+            --input-border: #d0d0d0;
         }
         
         body {
-            background-color: #000000;
+            background-color: var(--bg-color);
             display: flex;
             flex-direction: column;
             height: 100vh;
-            color: #ffffff;
+            color: var(--text-color);
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300babc' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
         
         .logo {
             font-size: 42px;
             font-weight: 900;
-            color: #00babc;
+            color: var(--accent-color);
             margin-bottom: 10px;
             position: relative;
             display: inline-block;
@@ -39,23 +72,26 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(90deg, #00babc, #000000);
+            background: linear-gradient(90deg, var(--accent-color), var(--bg-color));
         }
         
         .header {
-            background-color: #000000;
-            color: white;
+            background-color: var(--header-bg);
+            color: var(--text-color);
             padding: 20px;
             text-align: center;
-            border-bottom: 2px solid #00babc;
+            border-bottom: 2px solid var(--accent-color);
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .header h1 {
             font-size: 28px;
             margin-bottom: 5px;
             font-weight: 700;
-            color: #00babc;
+            color: var(--accent-color);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -73,7 +109,34 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, #00babc, #00003a);
+            background: linear-gradient(90deg, var(--accent-color), var(--bg-color));
+        }
+        
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: var(--button-text);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .theme-toggle:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+        
+        .theme-toggle-icon {
+            font-size: 20px;
         }
         
         .chat-container {
@@ -85,7 +148,7 @@
             max-width: 900px;
             margin: 0 auto;
             width: 100%;
-            background-color: #121212;
+            background-color: var(--chat-bg);
         }
         
         .message {
@@ -104,24 +167,24 @@
         }
         
         .user-message {
-            background-color: #00003a;
-            color: white;
+            background-color: var(--message-user-bg);
+            color: var(--text-color);
             align-self: flex-end;
         }
         
         .bot-message {
-            background-color: #222222;
-            color: #ffffff;
+            background-color: var(--message-bot-bg);
+            color: var(--text-color);
             align-self: flex-start;
-            border-left: 3px solid #00babc;
+            border-left: 3px solid var(--accent-color);
         }
         
         .typing-indicator {
             align-self: flex-start;
-            background-color: #222222;
+            background-color: var(--message-bot-bg);
             padding: 14px 18px;
             border-radius: 8px;
-            border-left: 3px solid #00babc;
+            border-left: 3px solid var(--accent-color);
             margin-bottom: 15px;
             display: none;
         }
@@ -129,7 +192,7 @@
         .typing-indicator span {
             height: 8px;
             width: 8px;
-            background-color: #00babc;
+            background-color: var(--accent-color);
             display: inline-block;
             border-radius: 50%;
             margin-right: 3px;
@@ -152,8 +215,8 @@
         .input-area {
             display: flex;
             padding: 20px;
-            background-color: #000000;
-            border-top: 2px solid #00babc;
+            background-color: var(--bg-color);
+            border-top: 2px solid var(--accent-color);
         }
         
         .input-area form {
@@ -166,22 +229,22 @@
         .input-area input {
             flex: 1;
             padding: 14px 18px;
-            border: 2px solid #333333;
-            background-color: #121212;
+            border: 2px solid var(--input-border);
+            background-color: var(--input-bg);
             border-radius: 8px;
             font-size: 16px;
             outline: none;
-            color: #ffffff;
+            color: var(--text-color);
             transition: border-color 0.3s;
         }
         
         .input-area input:focus {
-            border-color: #00babc;
+            border-color: var(--accent-color);
         }
         
         .input-area button {
-            background-color: #00babc;
-            color: white;
+            background-color: var(--accent-color);
+            color: var(--button-text);
             border: none;
             border-radius: 8px;
             padding: 14px 25px;
@@ -194,12 +257,12 @@
         }
         
         .input-area button:hover {
-            background-color: #009a9c;
+            background-color: var(--accent-hover);
             transform: translateY(-2px);
         }
         
         .input-area button:disabled {
-            background-color: #333333;
+            background-color: var(--border-color);
             cursor: not-allowed;
             transform: none;
         }
@@ -208,9 +271,9 @@
             text-align: center;
             margin: 30px 0;
             padding: 30px;
-            background-color: #121212;
+            background-color: var(--chat-bg);
             border-radius: 10px;
-            border: 1px solid #333333;
+            border: 1px solid var(--border-color);
             position: relative;
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300babc' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
@@ -222,11 +285,11 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(90deg, #00babc, #00003a);
+            background: linear-gradient(90deg, var(--accent-color), var(--bg-color));
         }
         
         .welcome-message h2 {
-            color: #00babc;
+            color: var(--accent-color);
             margin-bottom: 15px;
             font-weight: 700;
             font-size: 24px;
@@ -234,7 +297,7 @@
         }
         
         .welcome-message p {
-            color: #ffffff;
+            color: var(--text-color);
             line-height: 1.6;
             margin-bottom: 20px;
             font-weight: 500;
@@ -244,18 +307,18 @@
             display: inline-block;
             margin: 5px;
             padding: 10px 18px;
-            background-color: #222222;
-            border: 1px solid #333333;
+            background-color: var(--message-bot-bg);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            color: #00babc;
+            color: var(--accent-color);
             cursor: pointer;
             transition: all 0.3s;
             font-weight: 500;
         }
         
         .welcome-message .suggestion:hover {
-            background-color: #00003a;
-            border-color: #00babc;
+            background-color: var(--message-user-bg);
+            border-color: var(--accent-color);
             transform: translateY(-2px);
         }
     </style>
@@ -265,6 +328,9 @@
         <div class="logo">42</div>
         <h1>42Amman AI Chatbot</h1>
         <p>Ask me anything about 42Amman and Jordan!</p>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+            <span class="theme-toggle-icon">☀️</span>
+        </button>
     </div>
     
     <div class="chat-container" id="chatContainer">
@@ -300,6 +366,28 @@
             const chatContainer = document.getElementById('chatContainer');
             const typingIndicator = document.getElementById('typingIndicator');
             const sendBtn = document.getElementById('sendBtn');
+            const themeToggle = document.getElementById('themeToggle');
+            const themeToggleIcon = themeToggle.querySelector('.theme-toggle-icon');
+            const htmlElement = document.documentElement;
+            
+            // Theme toggle functionality
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                htmlElement.setAttribute('data-theme', newTheme);
+                themeToggleIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+                
+                // Save theme preference
+                localStorage.setItem('preferred-theme', newTheme);
+            });
+            
+            // Load saved theme preference
+            const savedTheme = localStorage.getItem('preferred-theme');
+            if (savedTheme) {
+                htmlElement.setAttribute('data-theme', savedTheme);
+                themeToggleIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+            }
             
             // Handle suggestion clicks
             document.querySelectorAll('.suggestion').forEach(suggestion => {
@@ -320,25 +408,9 @@
                 messageDiv.classList.add('message');
                 messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
                 messageDiv.innerHTML = message;
-                // const htmlContent = marked.parse(message);
-                // messageDiv.innerHTML = DOMPurify.sanitize(htmlContent);
                 chatContainer.appendChild(messageDiv);
                 scrollToBottom();
             }
-            // function addMessage(message, isUser) {
-            //     const messageDiv = document.createElement('div');
-            //     messageDiv.classList.add('message');
-            //     messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
-            //     if (isUser) {
-            //         messageDiv.textContent = message; // User messages are plain text
-            //     } else {
-            //         // Parse Markdown and sanitize HTML for bot messages
-            //         const htmlContent = marked.parse(message);
-            //         messageDiv.innerHTML = DOMPurify.sanitize(htmlContent);
-            //     }
-            //     chatContainer.appendChild(messageDiv);
-            //     scrollToBottom();
-            // }
             
             // Show typing indicator
             function showTypingIndicator() {
@@ -405,5 +477,5 @@
             userInput.focus();
         });
     </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'941b086faafc60bf',t:'MTc0NzU2NzkzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
