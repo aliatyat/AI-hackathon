@@ -3,7 +3,7 @@ import time
 import requests
 
 # CONFIG
-API_KEY = "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"
+API_KEY = "******************"
 API_URL = "https://api.groq.com/openai/v1/chat/completions"
 MODEL = "llama3-70b-8192"
 INPUT_FILE = "input_qa.json"
