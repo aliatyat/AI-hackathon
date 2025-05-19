@@ -23,14 +23,13 @@ A Flask-based web chatbot powered by a fine-tuned DistilGPT-2 model, designed to
 - **Model**: Fine-tuned DistilGPT-2 for lightweight, efficient NLP.
 - **Frontend**: HTML, CSS, JavaScript with `marked` and `DOMPurify` for safe link rendering.
 - **Optional Tools**:
-  - LangChain for domain restriction and conversation memory.
   - Groq API for dataset expansion (paraphrasing Q&A pairs).
 - **Data**: JSONL dataset with 1,000 Q&A pairs about 42 Amman/Irbid and Jordan.
 
 ## Installation
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/aliatyat/AI-hakton.git
+   git clone https://github.com/aliatyat/AI-hackathon.git
    cd 42-jordan-chatbot
    ```
 
