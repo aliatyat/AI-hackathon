@@ -1,4 +1,4 @@
-# 42 Jordan Chatbot
+# 42 Amman & Jordan Chatbot
 
 A Flask-based web chatbot powered by a fine-tuned DistilGPT-2 model, designed to answer questions about 42 Amman, 42 Irbid, the 42 Network, and Jordan-related topics. Features domain-restricted responses, conversation history, clickable links in answers, and a dark/light mode toggle for a sleek user experience.
 
@@ -30,7 +30,7 @@ A Flask-based web chatbot powered by a fine-tuned DistilGPT-2 model, designed to
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/aliatyat/AI-hackathon.git
-   cd 42-jordan-chatbot
+   cd AI-hackathon
    ```
 
 2. **Set Up a Virtual Environment**:
