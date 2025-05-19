@@ -72,7 +72,7 @@ A Flask-based web chatbot powered by a fine-tuned DistilGPT-2 model, designed to
 
 ## Dataset
 - **Format**: JSONL with `prompt` and `completion` fields.
-- **Content**: 1,000 Q&A pairs about 42 Amman, 42 Irbid, the 42 Network, and Jordan.
+- **Content**: 4,000 Q&A pairs about 42 Amman, 42 Irbid, the 42 Network, and Jordan.
 - **Source**: Expanded from an initial 100-question JSON file using paraphrasing (via Groq API or manual scripting).
 - **Example**:
   ```json
